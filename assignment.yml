@@ -106,7 +106,7 @@
           name: kibana
           state: installed
 
-      - name: Configure Elasticsearch.
+      - name: Configure Elasticsearch. (elasticsearch.yml)
         template:
           src: elasticsearch.yml.j2
           dest: /etc/elasticsearch/elasticsearch.yml
@@ -115,7 +115,7 @@
           group: elasticsearch
           mode: 0750
 
-      - name: Configure Elasticsearch 2.
+      - name: Configure Elasticsearch. (jvm.options)
         template:
           src: jvm.options.j2
           dest: /etc/elasticsearch/jvm.options
@@ -257,7 +257,7 @@
 
   - name: Install & configure, httpd & metricbeat 
     hosts: webserver
-    become: yes
+    become: true
     gather_facts: False
     tags: Installation & Configuration (httpd & Metricbeat)
 
@@ -300,9 +300,9 @@
           src: metricbeat.yml.j2
           dest: /etc/metricbeat/metricbeat.yml
           backup: yes
-          owner: root
-          group: metricbeat
-          mode: 0750
+          owner: ec2-user   # root
+          group: root    # metricbeat # elasticsearch
+          mode: 0600  #0750
 
       - name: Stop httpd service from running
         systemd:
