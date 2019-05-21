@@ -261,6 +261,9 @@
     gather_facts: False
     tags: Installation & Configuration (httpd & Metricbeat)
 
+    vars:
+      #visualserverip:            #put the following in metricbeat.yml.j2- hosts: ["{{visualserverip}}:9200"]
+    
     tasks:
       
       - name: Install the latest version of Apache
@@ -275,23 +278,32 @@
       - name: Disable metricbeat from monitoring the system
         command: metricbeat modules disable system
 
-      - name: Insert output for metricbeat to save logs in file   
-        blockinfile:
-          path: /etc/metricbeat/metricbeat.yml
-          block: |
-            output.file:
-              path: "/tmp/metricbeat"
-              filename: metricbeat
-          insertafter: '#ssl.key: "/etc/pki/client/cert.key"'
+      # - name: Insert output for metricbeat to save logs in file   
+      #   blockinfile:
+      #     path: /etc/metricbeat/metricbeat.yml
+      #     block: |
+      #       output.file:
+      #         path: "/tmp/metricbeat"
+      #         filename: metricbeat
+      #     insertafter: '#ssl.key: "/etc/pki/client/cert.key"'
       
-      - name: Change existing output to elasticsearch from metricbeat.yml file
-        lineinfile: 
-          path: /etc/metricbeat/metricbeat.yml
-          regexp: '^  hosts: \[\"localhost:9200\"\]'   
-          line: '  hosts: [ {{ groups["visualserver:9200"] }} ]'
+      # - name: Change existing output to elasticsearch from metricbeat.yml file
+      #   lineinfile: 
+      #     path: /etc/metricbeat/metricbeat.yml
+      #     regexp: '^  hosts: \[\"localhost:9200\"\]'   
+      #     line: '  hosts: [ {{ groups["visualserver:9200"] }} ]'
           
-      # replace above 2 tasks using jinja file task    
-      
+      # replace above 2 tasks using jinja file task   
+   
+      - name: Configure Metricbeat.
+        template:
+          src: metricbeat.yml.j2
+          dest: /etc/metricbeat/metricbeat.yml
+          backup: yes
+          owner: root
+          group: metricbeat
+          mode: 0750
+
       - name: Stop httpd service from running
         systemd:
           state: stopped
