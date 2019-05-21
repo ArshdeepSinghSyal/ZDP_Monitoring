@@ -253,16 +253,14 @@
 
 
 
-
-
   - name: Install & configure, httpd & metricbeat 
     hosts: webserver
-    become: true
+    become: yes
     gather_facts: False
     tags: Installation & Configuration (httpd & Metricbeat)
 
     vars:
-      #visualserverip:            #put the following in metricbeat.yml.j2- hosts: ["{{visualserverip}}:9200"]
+      #visualserverip: group[visualserver.public_ip]   #put the following in metricbeat.yml.j2- hosts: ["{{visualserverip}}:9200"]
     
     tasks:
       
@@ -300,9 +298,9 @@
           src: metricbeat.yml.j2
           dest: /etc/metricbeat/metricbeat.yml
           backup: yes
-          owner: ec2-user   # root
-          group: root    # metricbeat # elasticsearch
-          mode: 0600  #0750
+          owner: root
+          group: metricbeat    
+          mode: 0750
 
       - name: Stop httpd service from running
         systemd:
