@@ -91,7 +91,7 @@ setup.kibana:
 #-------------------------- Elasticsearch output ------------------------------
 output.elasticsearch:
   # Array of hosts to connect to.
-  hosts: ["3-14-80-1:9200"]
+  hosts: ["{{hostvars[groups['visualserver'][0]]['ansible_all_ipv4_addresses'][0]}}:9200"]
 
   # Optional protocol and basic auth credentials.
   #protocol: "https"

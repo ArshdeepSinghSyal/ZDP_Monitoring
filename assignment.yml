@@ -58,16 +58,16 @@
   - name: Install & Configure Elasticsearch & Kibana
     hosts: visualserver
     become: yes
-    gather_facts: False
+    gather_facts: True
     tags: Installation & Configuration
 
     vars:
-      #elasticsearch_major_version: 5.x
+      #elasticsearch_major_version: 7.1.x
       #elasticsearch_cluster_name: my_cluster
       #elasticsearch_node_name: my_node
       elasticsearch_network_host: visualserver
       elasticsearch_http_port: 9200 
-      #kibana_major_version: 5.x
+      #kibana_major_version: 7.1.x
       kibana_server_host: 0.0.0.0
       kibana_server_port: 5601
       kibana_elasticsearch_url: "http://localhost:9200"
@@ -259,12 +259,10 @@
     gather_facts: False
     tags: Installation & Configuration (httpd & Metricbeat)
 
-    vars:
-      #visualserverip: group[visualserver.public_ip]   #put the following in metricbeat.yml.j2- hosts: ["{{visualserverip}}:9200"]
     
     tasks:
-      
-      - name: Install the latest version of Apache
+
+      - name: Install the latest version of Apache and Metricbeat
         yum:
           name: 
             - httpd
@@ -274,24 +272,7 @@
         command: metricbeat modules enable apache
       
       - name: Disable metricbeat from monitoring the system
-        command: metricbeat modules disable system
-
-      # - name: Insert output for metricbeat to save logs in file   
-      #   blockinfile:
-      #     path: /etc/metricbeat/metricbeat.yml
-      #     block: |
-      #       output.file:
-      #         path: "/tmp/metricbeat"
-      #         filename: metricbeat
-      #     insertafter: '#ssl.key: "/etc/pki/client/cert.key"'
-      
-      # - name: Change existing output to elasticsearch from metricbeat.yml file
-      #   lineinfile: 
-      #     path: /etc/metricbeat/metricbeat.yml
-      #     regexp: '^  hosts: \[\"localhost:9200\"\]'   
-      #     line: '  hosts: [ {{ groups["visualserver:9200"] }} ]'
-          
-      # replace above 2 tasks using jinja file task   
+        command: metricbeat modules disable system 
    
       - name: Configure Metricbeat.
         template:
@@ -299,7 +280,7 @@
           dest: /etc/metricbeat/metricbeat.yml
           backup: yes
           owner: root
-          group: metricbeat    
+          #group: metricbeat    
           mode: 0750
 
       - name: Stop httpd service from running
