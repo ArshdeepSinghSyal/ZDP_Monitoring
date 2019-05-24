@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+# {{ ansible_managed }}
+# ======================== Elasticsearch Configuration =========================
+#
+>>>>>>> origin/master
 # NOTE: Elasticsearch comes with reasonable defaults for most settings.
 #       Before you set out to tweak and tune the configuration, make sure you
 #       understand what are you trying to accomplish and the consequences.
@@ -12,13 +18,21 @@
 #
 # Use a descriptive name for your cluster:
 #
+<<<<<<< HEAD
 cluster.name: {{ elasticsearch_cluster_name }}
+=======
+cluster.name: my_cluster
+>>>>>>> origin/master
 #
 # ------------------------------------ Node ------------------------------------
 #
 # Use a descriptive name for the node:
 #
+<<<<<<< HEAD
 node.name: {{ elasticsearch_node_name }}
+=======
+node.name: my_node
+>>>>>>> origin/master
 #
 # Add custom attributes to the node:
 #
@@ -54,7 +68,11 @@ node.name: {{ elasticsearch_node_name }}
 #
 # Set a custom port for HTTP:
 #
+<<<<<<< HEAD
 http.port: {{ elasticsearch_http_port }}
+=======
+http.port: 9200 
+>>>>>>> origin/master
 #
 # For more information, consult the network module documentation.
 #
@@ -83,6 +101,7 @@ http.port: {{ elasticsearch_http_port }}
 #
 # Require explicit names when deleting indices:
 #
+<<<<<<< HEAD
 #action.destructive_requires_name: true
 
 
@@ -187,3 +206,6 @@ http.port: {{ elasticsearch_http_port }}
 # # Require explicit names when deleting indices:
 # #
 # #action.destructive_requires_name: true
+=======
+#action.destructive_requires_name: true
+>>>>>>> origin/master
