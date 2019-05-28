@@ -1,2 +1,2 @@
-deployment_name: my-demo
-ec2_private_key_file: "~/.ssh/{{keypair}}.pem"
+# deployment_name: my-demo
+# ec2_private_key_file: "~/.ssh/{{keypair}}.pem"

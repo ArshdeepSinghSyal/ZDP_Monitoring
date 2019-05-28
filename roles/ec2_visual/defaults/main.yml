@@ -7,3 +7,5 @@ keypair: arshdeep # This is one of my keys that i already have in AWS
 region: us-east-1 # Change the Region
 hostpath: "./hosts"
 count: 1
+deployment_name: arsh
+ec2_private_key_file: "~/.ssh/{{keypair}}.pem"

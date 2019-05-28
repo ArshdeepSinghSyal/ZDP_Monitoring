@@ -79,8 +79,8 @@
       timeout: 60
     loop: "{{ ec2.instances }}"
 
-  - name: Set authorized key taken from file
-    authorized_key:
-      user: ec2-user
-      state: present
-      key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
+  # - name: Set authorized key taken from file
+  #   authorized_key:
+  #     user: ec2-user
+  #     state: present
+  #     key: "{{ lookup('file', '~/.ssh/id_rsa.pub') }}"
