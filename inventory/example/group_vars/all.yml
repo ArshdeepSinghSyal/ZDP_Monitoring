@@ -1,0 +1,6 @@
+---
+
+deployment_name: devayon
+security_group: "{{deployment_name}}-securitygroup" # Change the security group name here
+keypair: zdp-default # This is one of my keys that i already have in AWS
+ec2_private_key_file: "~/.ssh/{{keypair}}.pem"
