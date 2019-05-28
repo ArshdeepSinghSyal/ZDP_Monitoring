@@ -1,0 +1,36 @@
+---
+  - name: Provision Visual (Elasticsearch & Kibana) EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    tags: provisioning
+    roles:
+      - ec2_visual
+    
+
+  - name: Install & Configure Elasticsearch & Kibana
+    hosts: visualserver
+    become: yes
+    gather_facts: True
+    tags: Installation & Configuration
+    roles: 
+      - elastic_kibana_config
+
+
+  - name: Provision an (Metricbeat) EC2 Instance
+    hosts: localhost
+    connection: local
+    gather_facts: False
+    tags: provisioning
+    roles: 
+      - ec2_web
+
+
+
+  - name: Install & configure, httpd & metricbeat 
+    hosts: webserver
+    become: yes
+    gather_facts: False
+    tags: Installation & Configuration (httpd & Metricbeat)
+    roles: 
+      - metricbeat_config

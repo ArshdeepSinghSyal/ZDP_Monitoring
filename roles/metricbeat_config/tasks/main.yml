@@ -1,0 +1,40 @@
+---  
+  - name: Install the latest version of Apache and Metricbeat
+    yum:
+      name: 
+        - httpd
+        - https://artifacts.elastic.co/downloads/beats/metricbeat/metricbeat-7.0.1-x86_64.rpm
+
+  - name: Enable metricbeat to monitor httpd service  
+    command: metricbeat modules enable apache
+  
+  - name: Disable metricbeat from monitoring the system
+    command: metricbeat modules disable system 
+
+  - name: Configure Metricbeat.
+    template:
+      src: metricbeat.yml.j2
+      dest: /etc/metricbeat/metricbeat.yml
+      backup: yes
+      owner: root   
+      mode: 0750
+
+  - name: Stop httpd service from running
+    systemd:
+      state: stopped
+      name: httpd
+  
+  - name: Stop metricbeat service from running
+    systemd:
+      state: stopped
+      name: metricbeat
+    
+  - name: Make sure httpd service is running
+    systemd:
+      state: started
+      name: httpd
+  
+  - name: Make sure metricbeat service is running
+    systemd:
+      state: started
+      name: metricbeat

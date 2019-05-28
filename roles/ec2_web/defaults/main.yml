@@ -1,0 +1,9 @@
+---
+
+instance_type: t2.medium
+security_group: arsh-securitygroup # Change the security group name here
+image: ami-0c6b1d09930fac512 # This is an AMI i created myself
+keypair: arshdeep # This is one of my keys that i already have in AWS
+region: us-east-1 # Change the Region
+hostpath: "./hosts"
+count: 1
