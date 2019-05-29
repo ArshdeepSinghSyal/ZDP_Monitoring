@@ -1,5 +1,5 @@
 ---
-  - name: Provision EC2 Instance
+  - name: Provision 2 EC2 Instances
     hosts: localhost
     connection: local
     gather_facts: False
@@ -14,7 +14,8 @@
     gather_facts: True
     tags: Installation & Configuration
     roles: 
-      - elastic_kibana_config
+      - es
+      - kibana
 
 
   - name: Install & configure, httpd & metricbeat 
@@ -23,4 +24,4 @@
     gather_facts: False
     tags: Installation & Configuration (httpd & Metricbeat)
     roles: 
-      - metricbeat_config
+      - metricbeat_httpd

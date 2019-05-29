@@ -1,5 +1,5 @@
 ---
-  - name: Add Elasticsearch & Kibana GPG key.
+  - name: Add Elasticsearch GPG key.
     rpm_key:
       key: https://packages.elastic.co/GPG-KEY-elasticsearch
       state: present
@@ -8,12 +8,6 @@
     template:
       src: elasticsearch.repo.j2
       dest: /etc/yum.repos.d/elasticsearch.repo
-      mode: 0644
-  
-  - name: Add Kibana yum repository.
-    template:
-      src: kibana.repo.j2
-      dest: /etc/yum.repos.d/kibana.repo
       mode: 0644
       
   - name: Install Java 8
@@ -24,11 +18,6 @@
   - name: Install Elasticsearch.
     yum: 
       name: elasticsearch
-      state: installed
-  
-  - name: Install Kibana.
-    yum: 
-      name: kibana
       state: installed
 
   - name: Configure Elasticsearch. (elasticsearch.yml)
@@ -53,30 +42,10 @@
     service: 
       name: elasticsearch
       state: restarted
-
-  - name: Configure Kibana.
-    template:
-      src: kibana.yml.j2
-      dest: /etc/kibana/kibana.yml
-      owner: root
-      group: kibana
-      mode: 0750
   
-  - name: Restart Kibana
-    service: 
-      name: kibana 
-      state: restarted
-
   - name: Start Elasticsearch.
     service: 
       name: elasticsearch 
-      state: restarted
-      enabled: yes
-    ignore_errors: true
-
-  - name: Start Kibana.
-    service: 
-      name: kibana 
       state: restarted
       enabled: yes
     ignore_errors: true
