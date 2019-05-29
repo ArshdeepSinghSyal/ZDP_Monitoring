@@ -1,0 +1,13 @@
+---
+# tasks file for apm
+
+  - name: Add Elastic APM GPG key.
+    rpm_key:
+      key: https://packages.elastic.co/GPG-KEY-elasticsearch
+      state: present
+  
+  - name: Add Elasticsearch yum repository.
+    template:
+      src: elasticsearch.repo.j2
+      dest: /etc/yum.repos.d/elasticsearch.repo
+      mode: 0644
