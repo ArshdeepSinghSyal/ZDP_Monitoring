@@ -1,10 +1,12 @@
 # Monitoring & Analysis
 
-## Project Objective:
+## Project Objective
 
-Our goal was to monitor httpd using metricbeat and use elasticsearch and kibana to store and visualize the collected metric on a distributed environment over the aws cloud.
+Our goal was to monitor apache server (httpd) using metricbeat and use elasticsearch to store and kibana to visualize the collected metric on a distributed environment over the aws cloud.
 
 The following diagram shows the architecture of how this has been achieved:
+
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/Resources/Architecture.png)
 
 - Metricbeat and apache httpd are installed and configured on the web server.
 
@@ -18,8 +20,7 @@ The following diagram shows the architecture of how this has been achieved:
 
 - Kibana fetches metrics from elasticseach and creates visualizations.
 
-<br>
-## Application of project:
+## Application of Project
 
 - Kibana is used to create visualizations which can be imported into the client's kibana dashboard. This would allow the client to view informative visuals about the services being monitored.
 
@@ -29,8 +30,7 @@ The following diagram shows the architecture of how this has been achieved:
 
 The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/Resources/AmazonEc2.png).
 
-
-## Running The Code
+## Running the Code
 
 Prerequisites:
 - Python 2.6.5
