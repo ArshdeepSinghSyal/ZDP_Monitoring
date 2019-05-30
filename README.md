@@ -69,7 +69,11 @@ Running the code:
 
 4. Run the playbook
 
-    ```site-playbook.yml```
+    ```ansible-playbook site-playbook.yml```
+    <br>(to run it with default values)
+
+    ```ansible-playbook site-playbook.yml -i inventory/example```
+    <br>(to run it with the values updated in step 3)
 
 Add screenshot of playbook success
 
