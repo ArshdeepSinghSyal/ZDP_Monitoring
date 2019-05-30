@@ -60,7 +60,7 @@ Prerequisites:
 
 Note: The master playbook as well as all the roles are idempotent.
 
-Add screenshot of playbook success
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/Playbooksuccess.png)
 
 ## Project Overview
 
