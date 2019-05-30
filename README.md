@@ -1,5 +1,7 @@
 # Monitoring & Analysis
 
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/zaloni.jpg)
+
 ## Project Objective
 
 Our goal was to monitor apache server (httpd) using metricbeat and use elasticsearch to store and kibana to visualize the collected metric on a distributed environment over the aws cloud.
