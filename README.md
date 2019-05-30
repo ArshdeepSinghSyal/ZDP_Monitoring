@@ -28,6 +28,16 @@ The following diagram shows the architecture of how this has been achieved:
 
 - The following visualizations were created using kibana:
 
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/v1.png)
+<br>
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/v2.png)
+<br>
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/v3.png)
+<br>
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/v4.png)
+<br>
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/v5.png)
+
 The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/PPT.key)
 
 ## Running the Code
