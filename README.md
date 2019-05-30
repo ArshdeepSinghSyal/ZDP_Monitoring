@@ -40,7 +40,7 @@ Prerequisites:
  
     ```git clone```
 
-2. Source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout).
+2. Source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout and you are using boto which is required by some depriciated modules of ansible, eg: ec2 module).
 
     ```source ./script.sh```
 
@@ -57,6 +57,8 @@ Prerequisites:
 
     ```ansible-playbook site-playbook.yml -i inventory/example```
     <br>(to run it with the values updated in step 3)
+
+Note: The master playbook as well as all the roles are idempotent.
 
 Add screenshot of playbook success
 
