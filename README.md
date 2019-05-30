@@ -71,41 +71,46 @@ The project has 5 working ansible roles:
 ### Functionality of each role:-
 
 1. **Visual Server:**<br>
-    It has the following _ taks defined under it:
-    - Provisions a amazon linux 2 machine from aws of t2.medium tier.
-    - Sets up ssh access into the machine.
-    -  Adds the newly provisioned instance to a host group by the name: visualserver.
+    It has the following 4 taks defined under it:
+    - Create a security group with the required permisions.
+    - Provisions a amazon linux 2 machine from aws of t2.medium tier and sets up ssh access into the machine.
+    -  Adds the newly provisioned instance to a host group - visualserver.
+    - Waits for SSH to come up.
 
 2. **Web Server:**<br>
-    It has the following _ taks defined under it:
-    - Provisions a amazon linux 2 machine from aws of t2.medium tier.
-    - Sets up ssh access into the machine.
-    -  Adds the newly provisioned instance to a host group by the name: webserver.
+    It has the following 4 taks defined under it:
+    - Create a security group with the required permisions.
+    - Provisions a amazon linux 2 machine from aws of t2.medium tier and sets up ssh access into the machine.
+    -  Adds the newly provisioned instance to a host group - webserver.
+    - Waits for SSH to come up.
 
 3. **Elasticsearch:**<br>
-    It has the following _ tasks defined under it:
-    - Downloads a verified yum repository for elasticsearch. 
-    -  Installs java on the machine which is a pre requisite to elasticsearch. 
+    It has the following 8 tasks defined under it:
+    - Adds elasticsearch's gpg key.
+    - Adds a verified yum repository for elasticsearch using the template elasticsearch.repo.j2.
+    - Installs Java 8 on the machine which is a pre-requisite to elasticsearch.
     - Uses yum package manager to install elasticsearch.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
+    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the required configurations.
+    - Configures elasticsearch by replacing configuration file jvm.options with our template file jvm.options.j2 which contains all the required configurations.
     - Restarts elasticsearch.
+    - Starts elasticsearch.
 
 4. **Kibana:**<br>
-    It has the following _ tasks defined under it:
-    - Downloads a verified yum repository for elasticsearch. 
-    -  Installs java on the machine which is a pre requisite to elasticsearch. 
-    - Uses yum package manager to install elasticsearch.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
-    - Restarts elasticsearch
-
+    It has the following 7 tasks defined under it:
+    - Adds kibana's gpg key.
+    - Adds a verified yum repository for kiaban using the template kibana.repo.j2.
+    - Installs Java 8 on the machine which is a pre-requisite to kibana.
+    - Uses yum package manager to install kibana.
+    - Configures kibana by replacing configuration file kibana.yml with our template file kibana.yml.j2 which contains all the required configurations.
+    - Restarts kibana.
+    - Starts kibana.
 
 5. **Metricbeat & HTTPD:**<br>
-    It has the following _ tasks defined under it:
-    - Downloads a verified yum repository for elasticsearch. 
-    -  Installs java on the machine which is a pre requisite to elasticsearch. 
-    - Uses yum package manager to install elasticsearch.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
-    - Configures elasticsearch by replacing configuration file elasticsearch.yml with our template file elasticsearch.yml.j2 whoch contains all the correct configurations.
-    - Restarts elasticsearch.
+    It has the following 8 tasks defined under it:
+    - Installs the latest version of Metribeat and Apache HTTPD using yum package manager.
+    - Configures Metribeat to monitor HTTPD.
+    - Configures Metribeat to not monitor the system which it does by default.
+    - Stops HTTPD service.
+    - Stops Metricbeat service.
+    - Starts HTTPD service.
+    - Starts Metribeat service.
