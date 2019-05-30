@@ -1,0 +1,4 @@
+---
+ deployment_name: my-demo
+ ec2_private_key_file: "~/.ssh/{{keypair}}.pem"
+ security_group: "{{deployment_name}}-securitygroup" # Change the security group name here
