@@ -28,7 +28,7 @@ The following diagram shows the architecture of how this has been achieved:
 
 - The following visualizations were created using kibana:
 
-The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/Resources/AmazonEc2.png).
+The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/PPT.key)
 
 ## Running the Code
 
