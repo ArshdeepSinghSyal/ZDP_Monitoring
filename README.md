@@ -6,7 +6,7 @@ Our goal was to monitor apache server (httpd) using metricbeat and use elasticse
 
 The following diagram shows the architecture of how this has been achieved:
 
-![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/Resources/Architecture.png)
+![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/Architecture.png)
 
 - Metricbeat and apache httpd are installed and configured on the web server.
 
@@ -28,7 +28,7 @@ The following diagram shows the architecture of how this has been achieved:
 
 - The following visualizations were created using kibana:
 
-The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Presentation/PPT.key)
+The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/PPT.key)
 
 ## Running the Code
 
@@ -48,7 +48,9 @@ Prerequisites:
 
 3. Change the variables in inventory/example/all/vars.yml
 
-4. Run the playbook
+4. Make sure that your aws private key is present (###.pem) in the ~/.ssh directory.
+
+5. Run the master playbook
 
     ```ansible-playbook site-playbook.yml```
     <br>(to run it with default values)
