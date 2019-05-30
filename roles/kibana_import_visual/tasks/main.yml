@@ -1,0 +1,9 @@
+---
+  - name: Import my_dashboard to kibana
+    uri:
+      url: localhost:5601
+      method: POST
+      body: "{{ lookup('file','m.json') }}" 
+      force_basic_auth: yes
+      status_code: 200
+      body_format: json
