@@ -22,7 +22,7 @@ The following diagram shows the architecture of how this has been achieved:
 
 - Kibana fetches metrics from elasticseach and creates visualizations.
 
-## Application of Project
+## Applications of Project
 
 - Kibana is used to create visualizations which can be imported into the client's kibana dashboard. This would allow the client to view informative visuals about the services being monitored.
 
@@ -42,9 +42,9 @@ The following diagram shows the architecture of how this has been achieved:
 
 The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/PPT.key)
 
-## Running the Code
+## Running the Project
 
-Prerequisites:
+### Pre-requisites
 
 - Python = 2.7
 - Ansible >= 2.6.5
@@ -54,7 +54,7 @@ Prerequisites:
 - tornado
 - AWS CLI
 
-Steps to instals pre-requisites:
+### Steps to instals pre-requisites:
 
 ```shell
 easy_install pip
@@ -65,18 +65,18 @@ pip install boto
 pip install boto3
 ```
 
-Steps to install and configure AWS CLI:
+### Steps to install and configure AWS CLI:
 ```
 curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 unzip awscli-bundle.zip
 sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 ```
 
-Make changes to the following files:
+**Make changes to the following files:**
 <br>a) ~/.aws/config
 <br>b) ~/.aws/credentials
 
-Changes to ~/.aws/config
+**Changes to ~/.aws/config**
 ```
 [default]
 role_arn = arn:aws:iam::<account_id_number>:role/<role_name>
@@ -95,7 +95,7 @@ region = <region name> ex. us-east-1
 source_profile = <aws username>
 ```
 
-Changes to ~/.aws/config
+***Changes to ~/.aws/credentials***
 ```
 [default]
 
@@ -108,23 +108,24 @@ aws_access_key_id = <access key>
 aws_secret_access_key = <secret key>
 ```
 
-AWS EC2 Prerequistes:
+### AWS EC2 Prerequistes
 
 - Create a keypair and download it from AWS EC2, you will only be able to download this keypair once.
 - Move your keypair to ```~/.ssh```
 - Change permissions of the keypair to 400. As follows:
 ```chmod 400 ~/.ssh/<keypair name>.pem```
 
+### Running the Code
 
 1. Clone the repo.
- 
+
     ```git clone```
 
 2. Source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout and you are using boto which is required by some depriciated modules of ansible, eg: ec2 module).
 
     ```source ./script.sh```
 
-    The temporary credentials assigned, will time out after 1 hour of running the script. It will need to be run again after an hour.
+    (The temporary credentials assigned, will time out after 1 hour of running the script. It will need to be run again after an hour)
 
 3. Change the variables in inventory/example/all/vars.yml
 
