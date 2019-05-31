@@ -119,7 +119,7 @@ aws_secret_access_key = <secret key>
 
 1. Clone the repo.
 
-    ```git clone```
+    ```git clone https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3.git```
 
 2. Source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout and you are using boto which is required by some depriciated modules of ansible, eg: ec2 module).
 
@@ -128,8 +128,10 @@ aws_secret_access_key = <secret key>
     (The temporary credentials assigned, will time out after 1 hour of running the script. It will need to be run again after an hour)
 
 3. Change the variables in inventory/example/all/vars.yml
+OR
+Create a new file in inventory with the same structure as inventory and add the variables in the new file. inventory/{newfile}/all/{newvars}.yml
 
-4. Make sure that your aws private key is present (###.pem) in the ~/.ssh directory.
+4. Make sure that your aws private key (###.pem) is present in the ~/.ssh directory.
 
 5. Run the master playbook
 
@@ -138,6 +140,9 @@ aws_secret_access_key = <secret key>
 
     ```ansible-playbook site-playbook.yml -i inventory/example```
     <br>(to run it with the values updated in step 3)
+
+    ```ansible-playbook site-playbook.yml -i inventory/{newfile}```
+    <br>(to run it with the new file in the inventory folder updated in step 3)
 
 Note: The master playbook as well as all the roles are idempotent.
 
