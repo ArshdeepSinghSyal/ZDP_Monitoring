@@ -1,9 +1,9 @@
 ---
   - name: Import my_dashboard to kibana
     uri:
-      url: http://{{groups['visualserver'][0]}}:5601/api/saved_objects/_bulk_create
+      url: http://{{groups['visualserver'][0]}}:5601/api/saved_objects/_bulk_get
       method: POST
-      body: "{{ lookup('file','m.json') }}"
+      body: "{{ lookup('file','mydash.json') }}"
       headers:
         'kbn-xsrf': 'true'
       force_basic_auth: yes
