@@ -73,8 +73,8 @@ sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 ```
 
 Make changes to the following files:
-    a) ~/.aws/config
-    b) ~/.aws/credentials
+<br>a) ~/.aws/config
+<br>b) ~/.aws/credentials
 
 Changes to ~/.aws/config
 ```
