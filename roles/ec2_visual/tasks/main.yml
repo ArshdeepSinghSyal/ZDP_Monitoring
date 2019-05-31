@@ -44,22 +44,7 @@
       count_tag:
         Name: "{{deployment_name}}-Visual Instance"
       exact_count: "{{ count }}"
-    register: ec2
-
-  # - name: Launch the new EC2 Instance
-  #   ec2_instance:
-  #     name: New Visual Instance
-  #     state: present
-  #     region: "{{ region }}"
-  #     key_name: "{{ keypair }}"
-  #     instance_type: "{{ instance_type}}"
-  #     security_group: "{{ security_group }}"
-  #     network:
-  #       assign_public_ip: true
-  #     image_id: "{{ image }}"
-  #     tags:
-  #       Environment: Visual
-  #   register: ec2    
+    register: ec2 
 
   - name: Add new instance to host group
     add_host:

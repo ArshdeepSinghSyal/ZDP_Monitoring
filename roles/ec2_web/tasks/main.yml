@@ -38,11 +38,11 @@
       region: "{{ region }}"
       keypair: "{{ keypair }}"
       instance_tags:
-        Name: "{{deployment_name}}-Instance"
-        role: Instance
+        Name: "{{deployment_name}}- Web Instance"
+        role: Web Instance
         environment: "{{deployment_name}}"
       count_tag:
-        Name: "{{deployment_name}}-Instance"
+        Name: "{{deployment_name}}-Web Instance"
       exact_count: "{{ count }}"
     register: ec2
 
