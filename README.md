@@ -121,7 +121,7 @@ aws_secret_access_key = <secret key>
 
     ```git clone https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3.git```
 
-2. Source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout and you are using boto which is required by some depriciated modules of ansible, eg: ec2 module).
+2. Go inside the directory and source the script to assume aws role (needs to be done only if you do not have admin access to your aws accout and you are using boto which is required by some depriciated modules of ansible, eg: ec2 module).
 
     ```source ./script.sh```
 
@@ -147,6 +147,12 @@ Create a new file in inventory with the same structure as inventory and add the 
 Note: The master playbook as well as all the roles are idempotent.
 
 ![alt text](https://github.com/ArshdeepSinghSyal/Zaloni-Assignment-3/blob/features/add_roles_cleaning/Resources/Images/Playbooksuccess.png)
+
+6. Visit the dns address of the Visual Instance (pick from aws dashboard or playbook success messages) at port 5601.
+
+```http://[VisualInstanceDNS]:5601```
+
+7. Use kibana dashboard to import any existing dashboards and create new dashboards and visualizations from the collected data.
 
 ## Project Overview
 
