@@ -45,8 +45,76 @@ The link to the [presentation](https://github.com/ArshdeepSinghSyal/Zaloni-Assig
 ## Running the Code
 
 Prerequisites:
-- Python >= 2.6.5
+
+- Python = 2.7
 - Ansible >= 2.6.5
+- boto
+- boto3
+- nose
+- tornado
+- AWS CLI
+
+Steps to instals pre-requisites:
+
+```shell
+easy_install pip
+pip install ansible==2.6.5
+pip install nose
+pip install tornado
+pip install boto
+pip install boto3
+```
+
+Steps to install and configure AWS CLI:
+```
+curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+unzip awscli-bundle.zip
+sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
+```
+
+Make changes to the following files:
+    a) ~/.aws/config
+    b) ~/.aws/credentials
+
+Changes to ~/.aws/config
+```
+[default]
+role_arn = arn:aws:iam::<account_id_number>:role/<role_name>
+output = json
+region = <region name> ex. us-east-1
+source_profile = <aws username>
+
+[profile <aws username>]
+output = json
+region = <region name> ex. us-east-1
+
+[profile <child profile>]
+role_arn = arn:aws:iam::<account_id_number>:role/<role_name>
+output = json
+region = <region name> ex. us-east-1
+source_profile = <aws username>
+```
+
+Changes to ~/.aws/config
+```
+[default]
+
+[<child profile>]  #Child profile is yours to name!
+aws_access_key_id = <access key>
+aws_secret_access_key = <secret key>
+
+[<aws username>]
+aws_access_key_id = <access key>
+aws_secret_access_key = <secret key>
+```
+
+AWS EC2 Prerequistes:
+
+- Create a keypair and download it from AWS EC2, you will only be able to download this keypair once.
+- Move your keypair to ```~/.ssh```
+- Change permissions of the keypair to 400. As follows:
+```chmod 400 ~/.ssh/<keypair name>.pem```
+
 
 1. Clone the repo.
  
