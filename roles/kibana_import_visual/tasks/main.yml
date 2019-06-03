@@ -1,11 +1,14 @@
 ---
+#curl -X GET "http://ec2-3-84-205-191.compute-1.amazonaws.com:5601/api/kibana/dashboards/export?dashboard=7b43d7f0-83af-11e9-874e-991a74840878" -H 'kbn-xsrf: true' -o /Users/asyal/Desktop/Zaloni-Assignment-3/dash.json
+#curl -X POST "http://ec2-3-84-205-191.compute-1.amazonaws.com:5601/api/kibana/dashboards/import" -H 'kbn-xsrf: true' -H 'Content-Type: application/json' -d '@/Users/asyal/Desktop/Zaloni-Assignment-3/dash.json'
+
   - name: Import my_dashboard to kibana
     uri:
-      url: http://{{groups['visualserver'][0]}}:5601/api/saved_objects/_bulk_get
+      url: http://{{groups['visualserver'][0]}}:5601/api/kibana/dashboards/import
       method: POST
       body: "{{ lookup('file','mydash.json') }}"
       headers:
         'kbn-xsrf': 'true'
-      force_basic_auth: yes
       status_code: 200
       body_format: json
+

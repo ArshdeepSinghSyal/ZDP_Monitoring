@@ -25,9 +25,9 @@
     roles: 
       - metricbeat_httpd
 
-  # - name: Import Kibana Dashboard
-  #   hosts: localhost
-  #   gather_facts: True
-  #   tags: Kibana Visualisation
-  #   roles:
-  #     - kibana_import_visual
+  - name: Import Kibana Dashboard
+    hosts: localhost
+    gather_facts: True
+    tags: Kibana Visualisation
+    roles:
+      - kibana_import_visual

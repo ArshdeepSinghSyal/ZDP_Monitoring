@@ -9,11 +9,6 @@
       src: kibana.repo.j2
       dest: /etc/yum.repos.d/kibana.repo
       mode: 0644
-      
-  - name: Install Java 8
-    yum:
-      name: java-1.8.0-openjdk-devel
-      state: installed
   
   - name: Install Kibana.
     yum: 

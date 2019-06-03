@@ -152,17 +152,24 @@ Note: The master playbook as well as all the roles are idempotent.
 
 ```http://[VisualInstanceDNS]:5601```
 
-7. Use kibana dashboard to import any existing dashboards and create new dashboards and visualizations from the collected data.
+7. View kibana dashboard to visualize the imported dashboard and create any new dashboards and visualizations from the collected data.
+
+<br>
+
+Note: The following command can be used to export any existing or newly created dashboard.
+
+```curl -X GET "http://[VisualInstanceDNS]:5601/api/kibana/dashboards/export?dashboard=[Dasboard ID]" -H 'kbn-xsrf: true' -o [File Path]/[File Name].json```
 
 ## Project Overview
 
 The project has 5 working ansible roles:
 
-1. **Visual Server**
-2. **Web Server**
-3. **Metricbeat & Httpd**
-4. **Elasticsearch**
-5. **Kibana**
+1. **Visual Server** (ec2_visual)
+2. **Web Server** (ec2_web)
+3. **Metricbeat & Httpd** (metricbeat_httpd)
+4. **Elasticsearch** (es)
+5. **Kibana** (kibana)
+6. **Import Kibana Visuals** (kibana_import_visual)
 
 ### Functionality of each role:-
 
@@ -195,7 +202,6 @@ The project has 5 working ansible roles:
     It has the following 7 tasks defined under it:
     - Adds kibana's gpg key.
     - Adds a verified yum repository for kiaban using the template kibana.repo.j2.
-    - Installs Java 8 on the machine which is a pre-requisite to kibana.
     - Uses yum package manager to install kibana.
     - Configures kibana by replacing configuration file kibana.yml with our template file kibana.yml.j2 which contains all the required configurations.
     - Restarts kibana.
@@ -210,3 +216,7 @@ The project has 5 working ansible roles:
     - Stops Metricbeat service.
     - Starts HTTPD service.
     - Starts Metribeat service.
+
+6. **Kibana Dashboard Import**<br>
+    It has the following task:
+    - Import the already created dashboard - mydash.json 
